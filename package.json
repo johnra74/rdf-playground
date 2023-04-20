@@ -1,6 +1,6 @@
 {
-  "name": "dcat-playground",
-  "version": "0.0.0",
+  "name": "rdf-playground",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

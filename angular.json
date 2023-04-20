@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "jsonld-playground": {
+    "rdf-playground": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/jsonld-playground",
+            "outputPath": "dist/rdf-playground",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -41,7 +41,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -66,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "jsonld-playground:build:production"
+              "browserTarget": "rdf-playground:build:production"
             },
             "development": {
-              "browserTarget": "jsonld-playground:build:development"
+              "browserTarget": "rdf-playground:build:development"
             }
           },
           "options": {
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "jsonld-playground:build"
+            "browserTarget": "rdf-playground:build"
           }
         },
         "test": {
