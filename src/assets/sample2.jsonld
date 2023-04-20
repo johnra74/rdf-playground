@@ -1,0 +1,626 @@
+{
+  "@context": {
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "org": "http://www.w3.org/ns/org#",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "@vocab": "http://www.w3.org/ns/dcat#",
+    "dc": "http://purl.org/dc/terms/",
+    "pod": "https://project-open-data.cio.gov/v1.1/schema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "describedBy": {
+      "@id": "http://www.w3.org/2007/05/powder#describedby",
+      "@type": "@id"
+    },
+    "downloadURL": {
+      "@id": "dcat:downloadURL",
+      "@type": "@id"
+    },
+    "accessURL": {
+      "@id": "dcat:accessURL",
+      "@type": "@id"
+    },
+    "title": "dc:title",
+    "description": "dc:description",
+    "issued": {
+      "@id": "dc:issued",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "modified": {
+      "@id": "dc:modified",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "language": "dc:language",
+    "license": "dc:license",
+    "rights": "dc:rights",
+    "spatial": "dc:spatial",
+    "conformsTo": {
+      "@id": "dc:conformsTo",
+      "@type": "@id"
+    },
+    "publisher": "dc:publisher",
+    "identifier": "dc:identifier",
+    "temporal": "dc:temporal",
+    "format": "dc:format",
+    "accrualPeriodicity": "dc:accrualPeriodicity",
+    "homepage": "foaf:homepage",
+    "accessLevel": "pod:accessLevel",
+    "bureauCode": "pod:bureauCode",
+    "dataQuality": "pod:dataQuality",
+    "describedByType": "pod:describedByType",
+    "primaryITInvestmentUII": "pod:primaryITInvestmentUII",
+    "programCode": "pod:programCode",
+    "fn": "vcard:fn",
+    "hasEmail": "vcard:email",
+    "name": "skos:prefLabel",
+    "subOrganizationOf": "org:subOrganizationOf"
+  },
+  "@id": "https://data.austintexas.gov/data.json",
+  "@type": "dcat:Catalog",
+  "conformsTo": "https://project-open-data.cio.gov/v1.1/schema",
+  "describedBy": "https://project-open-data.cio.gov/v1.1/schema/catalog.json",
+  "dataset": [
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/2fur-bdju",
+      "issued": "2021-11-17",
+      "@type": "dcat:Dataset",
+      "modified": "2022-10-12",
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Sherry Lyles",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/2fur-bdju",
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "description": "Viral suppression is measured as a viral load test result of <200 copies/mL at the most recent viral load test during measurement year. Black women are HIV priority population in the Austin TGA who have higher disparities than others with HIV.",
+      "title": "Black Women Viral Suppression"
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/7gs5-gs44",
+      "issued": "2021-11-05",
+      "@type": "dcat:Dataset",
+      "modified": "2022-10-12",
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Sherry Lyles",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/7gs5-gs44",
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "description": "Measures the percentage of the total number of people living with HIV whose infection has been newly diagnosed.",
+      "title": "Diagnosed Black MSM"
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/adf9-5t3j",
+      "issued": "2018-08-31",
+      "@type": "dcat:Dataset",
+      "modified": "2021-04-14",
+      "keyword": [
+        "911",
+        "ambulance",
+        "annual report",
+        "atcems",
+        "austin",
+        "emergency medical service",
+        "ems",
+        "fy2017",
+        "recruiting",
+        "travis county"
+      ],
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Austin-Travis County EMS",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/adf9-5t3j",
+      "description": "** Static Data Set ** This table shows age range of all new hires for Fiscal Year 2016-17",
+      "title": "EMS-New Hires Age Range FY 2017",
+      "distribution": [
+        {
+          "@type": "dcat:Distribution",
+          "downloadURL": "https://data.austintexas.gov/api/views/adf9-5t3j/rows.csv?accessType=DOWNLOAD",
+          "mediaType": "text/csv"
+        },
+        {
+          "mediaType": "application/rdf+xml",
+          "downloadURL": "https://data.austintexas.gov/api/views/adf9-5t3j/rows.rdf?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/adf9-5t3j/columns.rdf",
+          "describedByType": "application/rdf+xml",
+          "@type": "dcat:Distribution"
+        },
+        {
+          "mediaType": "application/json",
+          "downloadURL": "https://data.austintexas.gov/api/views/adf9-5t3j/rows.json?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/adf9-5t3j/columns.json",
+          "describedByType": "application/json",
+          "@type": "dcat:Distribution"
+        },
+        {
+          "mediaType": "application/xml",
+          "downloadURL": "https://data.austintexas.gov/api/views/adf9-5t3j/rows.xml?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/adf9-5t3j/columns.xml",
+          "describedByType": "application/xml",
+          "@type": "dcat:Distribution"
+        }
+      ],
+      "theme": [
+        "Public Safety"
+      ]
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/dmpy-u8qf",
+      "issued": "2021-11-08",
+      "@type": "dcat:Dataset",
+      "modified": "2022-10-12",
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Sherry Lyles",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/dmpy-u8qf",
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "description": "In a calendar year had one or more documented CD4 or viral load tests within 30 days (1 month) of diagnosis.\n It is also important to note that an individual who enters care more than 30 days after diagnosis may still be included in subsequent steps of the continuum, but would not be counted as “linked to care.”",
+      "title": "Linkage Total Population"
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/dph5-8tqm",
+      "issued": "2021-11-18",
+      "@type": "dcat:Dataset",
+      "modified": "2022-10-12",
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Sherry Lyles",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/dph5-8tqm",
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "description": "In a calendar year had one or more documented CD4 or viral load tests within 30 days (1 month) of diagnosis.\n It is also important to note that an individual who enters care more than 30 days after diagnosis may still be included in subsequent steps of the continuum, but would not be counted as “linked to care.”",
+      "title": "Linkage for Transgender Women"
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/gbkv-fqch",
+      "issued": "2021-11-09",
+      "@type": "dcat:Dataset",
+      "modified": "2022-10-12",
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Sherry Lyles",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/gbkv-fqch",
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "description": "Measures the total number of people living with HIV whose infection has been \nnewly diagnosed.",
+      "title": "Diagnosed Black Women"
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/h8yz-qk3z",
+      "issued": "2021-11-08",
+      "@type": "dcat:Dataset",
+      "modified": "2022-10-12",
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Sherry Lyles",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/h8yz-qk3z",
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "description": "",
+      "title": "Linkage for Latinx MSM"
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/isr8-qmfx",
+      "issued": "2018-09-04",
+      "@type": "dcat:Dataset",
+      "modified": "2021-04-14",
+      "keyword": [
+        "911",
+        "academy",
+        "ambulance",
+        "annual report",
+        "atcems",
+        "austin",
+        "emergency medical services",
+        "ems",
+        "fy2017",
+        "travis county"
+      ],
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Austin-Travis County EMS",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/isr8-qmfx",
+      "description": "This table shows average initial and final VO2 measurements for cadet academy classes that took place during FY2016-17.",
+      "title": "EMS - FY2017 M1 Cadet Academy V02 Percentages",
+      "distribution": [
+        {
+          "@type": "dcat:Distribution",
+          "downloadURL": "https://data.austintexas.gov/api/views/isr8-qmfx/rows.csv?accessType=DOWNLOAD",
+          "mediaType": "text/csv"
+        },
+        {
+          "mediaType": "application/rdf+xml",
+          "downloadURL": "https://data.austintexas.gov/api/views/isr8-qmfx/rows.rdf?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/isr8-qmfx/columns.rdf",
+          "describedByType": "application/rdf+xml",
+          "@type": "dcat:Distribution"
+        },
+        {
+          "mediaType": "application/json",
+          "downloadURL": "https://data.austintexas.gov/api/views/isr8-qmfx/rows.json?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/isr8-qmfx/columns.json",
+          "describedByType": "application/json",
+          "@type": "dcat:Distribution"
+        },
+        {
+          "mediaType": "application/xml",
+          "downloadURL": "https://data.austintexas.gov/api/views/isr8-qmfx/rows.xml?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/isr8-qmfx/columns.xml",
+          "describedByType": "application/xml",
+          "@type": "dcat:Distribution"
+        }
+      ],
+      "theme": [
+        "Public Safety"
+      ]
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/jukz-za6j",
+      "issued": "2018-06-05",
+      "@type": "dcat:Dataset",
+      "modified": "2022-08-16",
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Hiko Naito - TylerTech/Socrata employee",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/jukz-za6j",
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "description": "",
+      "title": "Category Tiles",
+      "distribution": [
+        {
+          "@type": "dcat:Distribution",
+          "downloadURL": "https://data.austintexas.gov/api/views/jukz-za6j/rows.csv?accessType=DOWNLOAD",
+          "mediaType": "text/csv"
+        },
+        {
+          "mediaType": "application/rdf+xml",
+          "downloadURL": "https://data.austintexas.gov/api/views/jukz-za6j/rows.rdf?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/jukz-za6j/columns.rdf",
+          "describedByType": "application/rdf+xml",
+          "@type": "dcat:Distribution"
+        },
+        {
+          "mediaType": "application/json",
+          "downloadURL": "https://data.austintexas.gov/api/views/jukz-za6j/rows.json?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/jukz-za6j/columns.json",
+          "describedByType": "application/json",
+          "@type": "dcat:Distribution"
+        },
+        {
+          "mediaType": "application/xml",
+          "downloadURL": "https://data.austintexas.gov/api/views/jukz-za6j/rows.xml?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/jukz-za6j/columns.xml",
+          "describedByType": "application/xml",
+          "@type": "dcat:Distribution"
+        }
+      ]
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/kste-w677",
+      "issued": "2021-11-08",
+      "@type": "dcat:Dataset",
+      "modified": "2022-10-12",
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Sherry Lyles",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/kste-w677",
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "description": "",
+      "title": "Linkage for Black MSM"
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/mw36-kzzs",
+      "issued": "2021-11-05",
+      "@type": "dcat:Dataset",
+      "modified": "2022-10-12",
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Sherry Lyles",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/mw36-kzzs",
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "description": "Measures the percentage of the total number of people living with HIV whose infection has been newly diagnosed.",
+      "title": "Diagnosed Transgender"
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/nd3u-jrc9",
+      "issued": "2018-08-31",
+      "@type": "dcat:Dataset",
+      "modified": "2021-04-14",
+      "keyword": [
+        "911",
+        "ambulance",
+        "annual report",
+        "atcems",
+        "austin",
+        "emergency medical service",
+        "ems",
+        "fy2017",
+        "recruiting",
+        "travis county"
+      ],
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Austin-Travis County EMS",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/nd3u-jrc9",
+      "description": "** Static Data Set ** This table shows ethnic breakdown of all new hires for Fiscal Year 2016-17",
+      "title": "EMS-New Hires Ethnicity",
+      "distribution": [
+        {
+          "@type": "dcat:Distribution",
+          "downloadURL": "https://data.austintexas.gov/api/views/nd3u-jrc9/rows.csv?accessType=DOWNLOAD",
+          "mediaType": "text/csv"
+        },
+        {
+          "mediaType": "application/rdf+xml",
+          "downloadURL": "https://data.austintexas.gov/api/views/nd3u-jrc9/rows.rdf?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/nd3u-jrc9/columns.rdf",
+          "describedByType": "application/rdf+xml",
+          "@type": "dcat:Distribution"
+        },
+        {
+          "mediaType": "application/json",
+          "downloadURL": "https://data.austintexas.gov/api/views/nd3u-jrc9/rows.json?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/nd3u-jrc9/columns.json",
+          "describedByType": "application/json",
+          "@type": "dcat:Distribution"
+        },
+        {
+          "mediaType": "application/xml",
+          "downloadURL": "https://data.austintexas.gov/api/views/nd3u-jrc9/rows.xml?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/nd3u-jrc9/columns.xml",
+          "describedByType": "application/xml",
+          "@type": "dcat:Distribution"
+        }
+      ],
+      "theme": [
+        "Public Safety"
+      ]
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/qvnd-375i",
+      "issued": "2018-08-31",
+      "@type": "dcat:Dataset",
+      "modified": "2021-04-14",
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Austin-Travis County EMS",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "keyword": [
+        "911",
+        "ambulance",
+        "annual report",
+        "atcems",
+        "austin",
+        "emergency medical service",
+        "ems",
+        "fy2017",
+        "recruiting",
+        "travis county"
+      ],
+      "identifier": "https://data.austintexas.gov/api/views/qvnd-375i",
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "description": "** Static Data Set ** This table shows gender breakdown of all new hires for Fiscal Year 2016-17",
+      "title": "EMS-New Hires Gender FY2017",
+      "distribution": [
+        {
+          "@type": "dcat:Distribution",
+          "downloadURL": "https://data.austintexas.gov/api/views/qvnd-375i/rows.csv?accessType=DOWNLOAD",
+          "mediaType": "text/csv"
+        },
+        {
+          "mediaType": "application/rdf+xml",
+          "downloadURL": "https://data.austintexas.gov/api/views/qvnd-375i/rows.rdf?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/qvnd-375i/columns.rdf",
+          "describedByType": "application/rdf+xml",
+          "@type": "dcat:Distribution"
+        },
+        {
+          "mediaType": "application/json",
+          "downloadURL": "https://data.austintexas.gov/api/views/qvnd-375i/rows.json?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/qvnd-375i/columns.json",
+          "describedByType": "application/json",
+          "@type": "dcat:Distribution"
+        },
+        {
+          "mediaType": "application/xml",
+          "downloadURL": "https://data.austintexas.gov/api/views/qvnd-375i/rows.xml?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/qvnd-375i/columns.xml",
+          "describedByType": "application/xml",
+          "@type": "dcat:Distribution"
+        }
+      ]
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/spuc-9ifd",
+      "issued": "2021-11-02",
+      "@type": "dcat:Dataset",
+      "modified": "2021-11-02",
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Pacioccoj",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/spuc-9ifd",
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "description": "This metric tracks accidents for vehicle life cycle management.",
+      "title": "M.D.4_Number and percentage of City-owned vehicles using telematics for safety and risk reports (e.g. “driver scorecard”) and number of crashes involving City vehicles"
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/tqfa-wgf6",
+      "issued": "2022-01-14",
+      "@type": "dcat:Dataset",
+      "modified": "2022-10-12",
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Sherry Lyles",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/tqfa-wgf6",
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "description": "Measures the percentage of the total number of people living with HIV whose infection has been newly diagnosed.",
+      "title": "Diagnosed Latinx MSM"
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/vn9s-r7ug",
+      "issued": "2021-11-19",
+      "@type": "dcat:Dataset",
+      "modified": "2022-10-12",
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Sherry Lyles",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/vn9s-r7ug",
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "description": "This means that the denominator for linkage to care is different from the denominators used to calculate the other steps in the continuum. It is also important to note that an individual who enters care more than 30 days after diagnosis may still be included in subsequent steps of the continuum, but would not be counted as “linked to care.”",
+      "title": "Linkage for Black Women"
+    },
+    {
+      "accessLevel": "public",
+      "landingPage": "https://data.austintexas.gov/d/y2tf-4h3u",
+      "issued": "2018-09-04",
+      "@type": "dcat:Dataset",
+      "modified": "2021-04-14",
+      "keyword": [
+        "911",
+        "academy",
+        "ambulance",
+        "annual report",
+        "atcems",
+        "austin",
+        "emergency medical service",
+        "ems travis county",
+        "fy2017"
+      ],
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Austin-Travis County EMS",
+        "hasEmail": "mailto:no-reply@data.austintexas.gov"
+      },
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "data.austintexas.gov"
+      },
+      "identifier": "https://data.austintexas.gov/api/views/y2tf-4h3u",
+      "description": "** Static Data Set ** This table shows EMS Academy Information for Fiscal Year 2016-17",
+      "title": "EMS-Academy Information FY 2017",
+      "distribution": [
+        {
+          "@type": "dcat:Distribution",
+          "downloadURL": "https://data.austintexas.gov/api/views/y2tf-4h3u/rows.csv?accessType=DOWNLOAD",
+          "mediaType": "text/csv"
+        },
+        {
+          "mediaType": "application/rdf+xml",
+          "downloadURL": "https://data.austintexas.gov/api/views/y2tf-4h3u/rows.rdf?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/y2tf-4h3u/columns.rdf",
+          "describedByType": "application/rdf+xml",
+          "@type": "dcat:Distribution"
+        },
+        {
+          "mediaType": "application/json",
+          "downloadURL": "https://data.austintexas.gov/api/views/y2tf-4h3u/rows.json?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/y2tf-4h3u/columns.json",
+          "describedByType": "application/json",
+          "@type": "dcat:Distribution"
+        },
+        {
+          "mediaType": "application/xml",
+          "downloadURL": "https://data.austintexas.gov/api/views/y2tf-4h3u/rows.xml?accessType=DOWNLOAD",
+          "describedBy": "https://data.austintexas.gov/api/views/y2tf-4h3u/columns.xml",
+          "describedByType": "application/xml",
+          "@type": "dcat:Distribution"
+        }
+      ],
+      "theme": [
+        "Public Safety"
+      ]
+    }
+  ]
+}

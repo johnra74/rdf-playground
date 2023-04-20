@@ -1,0 +1,410 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "@context": {
+      "type": "object",
+      "properties": {
+        "adms": {
+          "type": "string"
+        },
+        "dcat": {
+          "type": "string"
+        },
+        "dcterms": {
+          "type": "string"
+        },
+        "foaf": {
+          "type": "string"
+        },
+        "rdf": {
+          "type": "string"
+        },
+        "rdfs": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "vcard": {
+          "type": "string"
+        },
+        "xsd": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "adms",
+        "dcat",
+        "dcterms",
+        "foaf",
+        "rdf",
+        "rdfs",
+        "schema",
+        "vcard",
+        "xsd"
+      ]
+    },
+    "@graph": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "@id": {
+            "type": "string"
+          },
+          "@type": {},
+          "dcterms:modified": {
+            "type": "string"
+          },
+          "foaf:primaryTopic": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "vcard:country-name": {
+            "type": "string"
+          },
+          "vcard:locality": {
+            "type": "string"
+          },
+          "vcard:postal-code": {
+            "type": "string"
+          },
+          "vcard:street-address": {
+            "type": "string"
+          },
+          "adms:contactPoint": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcat:distribution": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcat:keyword": {},
+          "dcat:landingPage": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcat:theme": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcterms:accrualPeriodicity": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcterms:conformsTo": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcterms:description": {},
+          "dcterms:issued": {
+            "type": "string"
+          },
+          "dcterms:language": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcterms:publisher": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcterms:spatial": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcterms:temporal": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcterms:title": {
+            "type": "object",
+            "properties": {
+              "@language": {
+                "type": "string"
+              },
+              "@value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@language",
+              "@value"
+            ]
+          },
+          "dcat:dataset": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcat:record": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcat:themeTaxonomy": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcterms:license": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcterms:rights": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "foaf:homepage": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcterms:type": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "foaf:name": {
+            "type": "string"
+          },
+          "dcat:accessURL": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "dcterms:format": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "vcard:hasValue": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "schema:endDate": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string"
+              },
+              "@value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@type",
+              "@value"
+            ]
+          },
+          "schema:startDate": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string"
+              },
+              "@value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@type",
+              "@value"
+            ]
+          },
+          "vcard:fn": {
+            "type": "string"
+          },
+          "vcard:hasAddress": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "vcard:hasEmail": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "vcard:hasTelephone": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "rdfs:label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "@id",
+          "@type",
+          "dcat:keyword",
+          "dcterms:description"
+        ]
+      }
+    }
+  },
+  "required": [
+    "@context",
+    "@graph"
+  ]
+}

@@ -1,0 +1,74 @@
+<div class="pt-2">
+  <div class="row mh-100">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-6" 
+      [ngStyle]="{ 'min-height': (height + 100) + 'px' }">
+      <aero-jsonEditor #myJsonEdit class="my-json-editor"
+            [options]="jsonEditOptions"
+            (changeContent)="changeJson($event)"></aero-jsonEditor>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-6">
+      <div *ngIf="isReady" class="d-flex">
+        <div class="col-12">
+          <form class="d-flex" autocomplete="off">
+            <input class="form-control me-sm-2" 
+              [(ngModel)]="selectedNode" name="node"
+              [typeahead]="typeaheadNodeList" typeaheadOptionField="title"
+              [typeaheadItemTemplate]="customItemTemplate"
+              [isAnimated]="true" 
+              (typeaheadOnSelect)="onSelect($event)"
+              placeholder="Show">
+          </form>
+        </div>
+      </div>
+      <div *ngIf="isReady" class="d-flex border pt-2">
+        <ngx-graph class="chart-container" 
+          [view]="[width, isStacked ? height * 2 : height - 50]"
+          [links]="edges" 
+          [nodes]="nodes"
+          [showMiniMap]="true">
+          <ng-template #nodeTemplate let-node>
+            <svg:g class="node">
+              <svg:rect rx="4px"
+                [attr.width]="node.dimension.width + (node.canExpand ? 20 : 0)"
+                [attr.height]="node.dimension.height"            
+                [attr.fill]="node.isLiteral ? '#555555' : '#75caeb'"
+              />
+              <svg:text alignment-baseline="central" 
+                [attr.x]="10" 
+                [attr.y]="node.dimension.height / 2"
+                [attr.fill]="node.isLiteral ? 'white': '#555555'">
+                {{node.label}}
+              </svg:text>
+
+              <path *ngIf="node.canExpand"
+                [attr.transform]="'translate(' + node.dimension.width + ', 7)'" 
+                fill="white"
+                d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"
+                (click)="expandNode(node.label)"
+              />
+            </svg:g>
+          </ng-template>
+
+          <ng-template #linkTemplate let-link>
+            <svg:g class="edge">
+              <svg:path class="line" stroke-width="2" marker-end="url(#arrow)"></svg:path>
+              <svg:text class="edge-label" text-anchor="middle">
+                <textPath
+                  class="text-path"
+                  [attr.href]="'#' + link.id"
+                  [style.dominant-baseline]="link.dominantBaseline"
+                  startOffset="50%"
+                >
+                  {{link.label}}
+                </textPath>
+              </svg:text>
+            </svg:g>
+          </ng-template>
+        </ngx-graph>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #customItemTemplate let-model="item">
+  <span><strong>{{model.title}}</strong> - {{model.id}}</span>
+</ng-template>
