@@ -1,6 +1,6 @@
 # RDF Playground
 
-This site was inspired by [json-ld playground](https://json-ld.org/playground/)</a>. When dealing with large JSON-LD content, their visualizer broke. This is a pure Angular version using web worker to offload heavy calculation from the main browser thread. 
+This site was inspired by [json-ld playground](https://json-ld.org/playground/). When dealing with large JSON-LD content, their visualizer broke. This is a pure Angular version using web worker to offload heavy calculation from the main browser thread. 
 
 ![RDF Playground](screen-shot.png "RDF Playground")
 
