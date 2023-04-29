@@ -1,6 +1,6 @@
 import ParserJsonLd from '@rdfjs/parser-jsonld';
 import { Readable } from 'readable-stream';
-import { filter } from 'lodash';
+import { filter, forEach, sortBy, uniqBy } from 'lodash';
 import { Observable, Subject } from 'rxjs';
 
 export enum RdfType {
@@ -9,7 +9,7 @@ export enum RdfType {
 
 export interface RdfCommand {
   type: RdfType;
-  argument: string;
+  arguments: string[];
 }
 
 export interface Response {
@@ -62,15 +62,42 @@ export class RdfHandler {
         this.process(cmd);
         break;
       case RdfType.FETCH:
-        if (cmd.argument === 'all') {
+        if (cmd.arguments[0] === 'all') {
           this.responseSubject.next({ 
             command: cmd,
             success: true, 
             result: this.cache
           });
+        } else if (cmd.arguments[0] === 'types') {
+          const matches:string[] = [];
+          forEach(uniqBy(this.cache, 'type'), 
+            (rsc:Resource) => matches.push(rsc.type));
+
+          this.responseSubject.next({
+            command: cmd,
+            success: true,
+            result: sortBy(matches)
+          });
+        } else if (cmd.arguments[0] === 'type') {
+          const matches:Resource[] =
+            filter(this.cache, (item:Resource) => item.type === cmd.arguments[1]);
+          if (typeof matches !== 'undefined' && matches.length > 0) {
+            this.responseSubject.next( {
+              command: cmd,
+              success: true,
+              result: matches
+            });
+          } else {
+            this.responseSubject.next( {
+              command: cmd,
+              success: false,
+              message: 'Unable to find node!'
+            })
+          }
+
         } else {
           const matches:Resource[] =
-            filter(this.cache, (item:Resource) => item.id === cmd.argument);
+            filter(this.cache, (item:Resource) => item.id === cmd.arguments[0]);
           if (typeof matches !== 'undefined' && matches.length > 0) {
             this.responseSubject.next( {
               command: cmd,
@@ -104,7 +131,7 @@ export class RdfHandler {
   private process(command: RdfCommand): void {
     const input: Readable = new Readable({
       read: () => {
-        input.push(command.argument);    
+        input.push(command.arguments[0]);    
         input.push(null);        
       }
     });

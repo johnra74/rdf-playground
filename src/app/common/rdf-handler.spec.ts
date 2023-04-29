@@ -59,13 +59,13 @@ describe('Given RdfHandler', () => {
       next: (resp: Response) => {
         if (resp.command.type === RdfType.FETCH) {
           expect(resp.success).toBeTrue();
-          expect(resp.command.argument).toEqual('all');
+          expect(resp.command.arguments[0]).toEqual('all');
           expect(resp.result.length).toEqual(1);
         }
       }
     });
 
-    const cmd: RdfCommand = { type: RdfType.FETCH, argument: 'all' };
+    const cmd: RdfCommand = { type: RdfType.FETCH, arguments: ['all'] };
     handler.execute(cmd);
     
     tick();
@@ -80,13 +80,13 @@ describe('Given RdfHandler', () => {
       next: (resp: Response) => {
         if (resp.command.type === RdfType.FETCH) {
           expect(resp.success).toBeTrue();
-          expect(resp.command.argument).toEqual('foo');
+          expect(resp.command.arguments[0]).toEqual('foo');
           expect(resp.result.id).toEqual('foo');
         }
       }
     });
 
-    const cmd: RdfCommand = { type: RdfType.FETCH, argument: 'foo' };
+    const cmd: RdfCommand = { type: RdfType.FETCH, arguments: ['foo'] };
     handler.execute(cmd);
     
     tick();
@@ -106,7 +106,7 @@ describe('Given RdfHandler', () => {
       }
     });
 
-    const cmd: RdfCommand = { type: RdfType.FETCH, argument: 'bar' };
+    const cmd: RdfCommand = { type: RdfType.FETCH, arguments: ['bar'] };
     handler.execute(cmd);
     
     tick();
@@ -125,7 +125,7 @@ describe('Given RdfHandler', () => {
       }
     });
 
-    const cmd: RdfCommand = { type: -1, argument: 'bar' };
+    const cmd: RdfCommand = { type: -1, arguments: ['bar'] };
     handler.execute(cmd);
     
     tick();
@@ -133,7 +133,7 @@ describe('Given RdfHandler', () => {
   }));
 
   function initializeWorkerData(handler: RdfHandler) {
-    const cmd: RdfCommand = { type: RdfType.INIT, argument: 'foo' };
+    const cmd: RdfCommand = { type: RdfType.INIT, arguments: ['foo'] };
     handler.getResponseObservable().subscribe({
       next: (resp: Response) => {
         if (resp.command.type === RdfType.INIT) {

@@ -11,14 +11,18 @@ export class RdfService {
 
   private readySubject: Subject<boolean>;
   private fetchResourceListSubject: Subject<Resource[]>;
+  private fetchUniformResourceListSubject: Subject<Resource[]>;
   private fetchResourceSubject: Subject<Resource>;
+  private fetchTypeListSubject: Subject<string[]>;
   private commandSubject: Subject<RdfCommand>;  
 
   constructor() { 
     this.commandSubject = new Subject<RdfCommand>();
     this.readySubject = new Subject<boolean>();
     this.fetchResourceListSubject = new Subject<Resource[]>();
+    this.fetchUniformResourceListSubject = new Subject<Resource[]>();
     this.fetchResourceSubject = new Subject<Resource>();
+    this.fetchTypeListSubject = new Subject<string[]>();
 
     if (typeof Worker !== 'undefined') {
       // Create a new
@@ -32,8 +36,12 @@ export class RdfService {
               this.readySubject.next(true);
               break;
             case RdfType.FETCH:
-              if (cmd.argument === 'all') {
+              if (cmd.arguments[0] === 'all') {
                 this.fetchResourceListSubject.next(data.result);
+              } else if (cmd.arguments[0] === 'types') {
+                this.fetchTypeListSubject.next(data.result);
+              } else if (cmd.arguments[0] === 'type') {
+                this.fetchUniformResourceListSubject.next(data.result);
               } else {
                 this.fetchResourceSubject.next(data.result);
               }
@@ -78,18 +86,35 @@ export class RdfService {
     return this.fetchResourceListSubject.asObservable();
   }
 
+  public getUniformResourceListObservable(): Observable<Resource[]> {
+    return this.fetchUniformResourceListSubject.asObservable();
+  }
+
   public getResourceObservable(): Observable<Resource> {
     return this.fetchResourceSubject.asObservable();
   }
 
+  public getTypeListObservable(): Observable<string[]> {
+    return this.fetchTypeListSubject.asObservable();
+  }
+
   public loadRDF(jsonld: string): void {
-    const cmd: RdfCommand = { type: RdfType.INIT, argument: jsonld };
+    const cmd: RdfCommand = { type: RdfType.INIT, arguments: [jsonld] };
     this.commandSubject.next(cmd);
   }
 
   public fetchNode(argument: string = 'all'): void {
-    const cmd: RdfCommand = { type: RdfType.FETCH, argument: argument } as RdfCommand;
+    const cmd: RdfCommand = { type: RdfType.FETCH, arguments: [argument] } as RdfCommand;
     this.commandSubject.next(cmd);
   }
 
+  public fetchTypes(): void {
+    const cmd: RdfCommand = { type: RdfType.FETCH, arguments: ['types'] } as RdfCommand;
+    this.commandSubject.next(cmd);
+  }
+
+  public fetchNodeListByType(type: string): void {
+    const cmd: RdfCommand = { type: RdfType.FETCH, arguments: ['type', type ]} as RdfCommand;
+    this.commandSubject.next(cmd);
+  }
 }
