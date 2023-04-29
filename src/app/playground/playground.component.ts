@@ -26,12 +26,17 @@ export class PlaygroundComponent implements OnDestroy, OnInit, AfterViewChecked 
 
   defaultMode: Mode = Mode.text;
   edges: Edge[] = [];
-  nodes: RdfNode[] = [];
+  nodes: RdfNode[] = [];  
   isReady: boolean;  
   isAddition: boolean;
   isStacked: boolean;
   selectedNode?: Resource;
+  selectedType?: string;
   typeaheadNodeList: Resource[];
+  nodeTypeList: string[];
+  uniformNodeList: Map<string,string>[];
+  nodeAttributeList: string[];
+  textTTL?: string;
 
   width: number;
   height: number;
@@ -47,7 +52,9 @@ export class PlaygroundComponent implements OnDestroy, OnInit, AfterViewChecked 
 
   private onReadySubscription: Subscription;
   private resourceListSubscription: Subscription;
+  private uniformResourceListSubscription: Subscription;
   private resourceSubscription: Subscription;
+  private typeListSubscription: Subscription;
 
   constructor(private renderer: Renderer2, private service: RdfService) {
     this.isReady = false;
@@ -61,7 +68,8 @@ export class PlaygroundComponent implements OnDestroy, OnInit, AfterViewChecked 
         next: (flag: boolean) => {
           if (flag) {
             this.isReady = flag;
-            this.service.fetchNode();
+            this.service.fetchTypes();
+            this.service.fetchNode();            
           }
         },
         error: (e) => console.log('failed to retrieve ready status: ' + e),
@@ -69,6 +77,7 @@ export class PlaygroundComponent implements OnDestroy, OnInit, AfterViewChecked 
       });
     
     this.typeaheadNodeList = [];
+    this.nodeTypeList = [];
     this.resourceListSubscription =
       service.getResourceListObservable().subscribe({
         next: (list: Resource[]) => {
@@ -77,9 +86,17 @@ export class PlaygroundComponent implements OnDestroy, OnInit, AfterViewChecked 
         error: (e) => console.log('failed to retrieve node list: ' + e),
         complete: () => console.log('completed retrieve node list call')
       });
+    this.typeListSubscription =
+      service.getTypeListObservable().subscribe({
+        next: (list: string[]) => {
+          this.nodeTypeList = list;
+        },
+        error: (e) => console.log('failed to retrieve node type list' + e),
+        complete: () => console.log('completed retrieve of node type list call')
+      })
     
     this.resourceSubscription =
-      service.getResourceObservable().subscribe( {
+      service.getResourceObservable().subscribe({
         next: (item: Resource) => {
           let localNodes: RdfNode[];
           let localEdges: Edge[];
@@ -106,7 +123,7 @@ export class PlaygroundComponent implements OnDestroy, OnInit, AfterViewChecked 
             localEdges = [];
             localNodes.push(root);
           }
-
+          
           forEach(item.attributes, (attr: Attribute) => {
             const propNode: RdfNode = { 
               id: uuid(),
@@ -123,10 +140,36 @@ export class PlaygroundComponent implements OnDestroy, OnInit, AfterViewChecked 
 
           this.nodes = [...localNodes];
           this.edges = [...localEdges];
+          
         },
         error: (e) => console.log('failed to retrieve node: ' + e),
         complete: () => console.log('completed call')
-      })
+      });
+    
+    this.nodeAttributeList = [];
+    this.uniformNodeList = [];
+    this.uniformResourceListSubscription =
+      this.service.getUniformResourceListObservable().subscribe({
+        next: (list: Resource[]) => {          
+          this.nodeAttributeList = [];
+          this.uniformNodeList = [];
+          forEach(list, (resource: Resource) => {
+            const item: Map<string,string> = new Map<string, string>();
+            item.set('id', resource.id);
+            item.set('title', resource.title);
+            
+            forEach(resource.attributes, (attr: Attribute) => {
+              if (!this.nodeAttributeList.includes(attr.label)) {
+                this.nodeAttributeList.push(attr.label);
+              }
+              item.set(attr.label, attr.value);
+            });
+            this.uniformNodeList.push(item);
+          });          
+        },
+        error: (e) => console.log('failed to retrieve uniform node list: ' + e),
+        complete: () => console.log('completed call for uniform node list')
+      });
   }
 
   ngAfterViewChecked(): void {
@@ -140,7 +183,9 @@ export class PlaygroundComponent implements OnDestroy, OnInit, AfterViewChecked 
   ngOnDestroy(): void {
     this.onReadySubscription.unsubscribe();
     this.resourceListSubscription.unsubscribe();
+    this.uniformResourceListSubscription.unsubscribe();
     this.resourceSubscription.unsubscribe();
+    this.typeListSubscription.unsubscribe();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -154,6 +199,12 @@ export class PlaygroundComponent implements OnDestroy, OnInit, AfterViewChecked 
     this.service.fetchNode(match.item.id);
   }
 
+  onSelectType(event:Event): void {
+    if (typeof this.selectedType !== 'undefined') {
+      this.service.fetchNodeListByType(this.selectedType);
+    }
+  }
+
   expandNode(nodeId:string) : void {
     this.isAddition = true;
     this.service.fetchNode(nodeId);
@@ -165,16 +216,9 @@ export class PlaygroundComponent implements OnDestroy, OnInit, AfterViewChecked 
     }    
   }
 
-  private setDimension(): void {
-    if (window.innerWidth < 1440) {
-      this.width = window.innerWidth - 50;
-      this.height = (window.innerHeight/2) - 150;  
-      this.isStacked = true;
-    } else {
-      this.width = (window.innerWidth / 2) - 50;
-      this.height = window.innerHeight - 150;
-      this.isStacked = false;
-    }    
+  private setDimension(): void {    
+    this.width = window.innerWidth - 50;
+    this.height = window.innerHeight - 150;      
   }
 
   private canExpand(nodeId: string): boolean {

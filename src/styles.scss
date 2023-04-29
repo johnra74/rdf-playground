@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@import "bootswatch/dist/lumen/variables";
+@import "bootswatch/dist/sandstone/variables";
 @import "bootstrap/scss/bootstrap";
-@import "bootswatch/dist/lumen/bootswatch";
+@import "bootswatch/dist/sandstone/bootswatch";
+
+:host .nav-tabs .nav-item.disabled a.disabled {
+  cursor: default;
+}
 
 .my-json-editor {
   --jse-theme-color: #158CBA;

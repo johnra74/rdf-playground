@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { JsonEditorModule } from 'ng-svelt-json-editor';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { AppComponent } from './app.component';
 import { PlaygroundComponent } from './playground/playground.component';
@@ -24,6 +25,7 @@ import { AboutComponent } from './about/about.component';
     FormsModule,
     JsonEditorModule,
     NgxGraphModule,
+    TabsModule.forRoot(),
     TypeaheadModule.forRoot(),
     AppRoutingModule
   ],

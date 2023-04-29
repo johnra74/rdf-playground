@@ -1,14 +1,16 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { Renderer2 } from '@angular/core';
+import { Subject } from 'rxjs';
 
-import { PlaygroundComponent, RdfNode } from './playground.component';
 import { JsonEditorModule } from 'ng-svelt-json-editor';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
-import { RdfService } from '../common/rdf.service';
-import { Subject } from 'rxjs';
-import { Attribute, Resource } from '../common/rdf-handler';
-import { Renderer2 } from '@angular/core';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TextContent } from 'vanilla-jsoneditor';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
+
+import { PlaygroundComponent, RdfNode } from './playground.component';
+import { RdfService } from '../common/rdf.service';
+import { Attribute, Resource } from '../common/rdf-handler';
 
 describe('Given PlaygroundComponent', () => {
   let component: PlaygroundComponent;
@@ -16,6 +18,8 @@ describe('Given PlaygroundComponent', () => {
   let mockReadySubject: Subject<boolean> = new Subject<boolean>();
   let mockResourceSubject: Subject<Resource> = new Subject<Resource>();
   let mockResourceListSubject: Subject<Resource[]> = new Subject<Resource[]>();
+  let mockTypeListSubject: Subject<string[]> = new Subject<string[]>();
+  let mockUniformResourceListSubject: Subject<Resource[]> = new Subject<Resource[]>();
 
   let mockService: any;
 
@@ -24,7 +28,8 @@ describe('Given PlaygroundComponent', () => {
       declarations: [ PlaygroundComponent ],
       imports: [
         JsonEditorModule,
-        NgxGraphModule
+        NgxGraphModule,
+        TabsModule.forRoot()
       ],
       providers: [
         { 
@@ -33,6 +38,10 @@ describe('Given PlaygroundComponent', () => {
             'getReadyObservable': mockReadySubject.asObservable(),
             'getResourceObservable': mockResourceSubject.asObservable(),
             'getResourceListObservable': mockResourceListSubject.asObservable(),
+            'getTypeListObservable': mockTypeListSubject.asObservable(),
+            'getUniformResourceListObservable': mockUniformResourceListSubject.asObservable(),
+            'fetchNodeListByType': null,
+            'fetchTypes': null,
             'fetchNode': null,
             'loadRDF': null
           })
@@ -128,5 +137,36 @@ describe('Given PlaygroundComponent', () => {
     mockResourceSubject.next(expandedNode);
     tick();    
     expect(component.edges.length).toEqual(1);
+  }));
+
+  it('When typeahead selected, Then fetchNode called with id', fakeAsync(() => {
+    component.selectedType = 'foo'
+    component.onSelectType({} as Event);
+    tick();
+    expect(component.isAddition).toBeFalse();
+    expect(mockService.fetchNodeListByType).toHaveBeenCalledWith('foo');
+  }));
+
+  it('When uniform resource observer received message, Then unform node list should reflect change', fakeAsync(() => {
+    const attributes: Attribute[] = [];
+    attributes.push({} as Attribute);
+    const resources: Resource[] = [];
+    resources.push({
+      attributes: attributes
+    } as Resource);
+
+    mockUniformResourceListSubject.next(resources);
+    tick();
+    expect(component.nodeAttributeList.length).toEqual(1);
+    expect(component.uniformNodeList.length).toEqual(1);
+  }));
+
+  it('When type list observer received message, Then typelist should reflect change', fakeAsync(() => {
+    const list: string[] = [];
+    list.push('foo');
+    
+    mockTypeListSubject.next(list);
+    tick();
+    expect(component.nodeTypeList.length).toEqual(1);    
   }));
 });

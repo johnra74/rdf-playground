@@ -16,6 +16,8 @@ describe('Given RdfService', () => {
     expect(service.getReadyObservable()).toBeTruthy();
     expect(service.getResourceListObservable()).toBeTruthy();
     expect(service.getResourceObservable()).toBeTruthy();
+    expect(service.getUniformResourceListObservable()).toBeTruthy();
+    expect(service.getTypeListObservable()).toBeTruthy();    
   });
 
   it('When loadRDF is called, then worker is initialized', fakeAsync(() => {
@@ -28,13 +30,33 @@ describe('Given RdfService', () => {
     tick();
   }));
 
-  it('When fetch is called, then it should fail', fakeAsync(() => {
+  it('When fetch Node is called, then it should fail', fakeAsync(() => {
     service.getResourceObservable().subscribe( {
       next: (res: Resource) => {
         expect(res).toBeNull();
       }
     })
     service.fetchNode('foobar');
+    tick()
+  }));
+
+  it('When fetch Types is called, then it should fail', fakeAsync(() => {
+    service.getTypeListObservable().subscribe( {
+      next: (list:string[]) => {
+        expect(list.length).toEqual(0);
+      }
+    })
+    service.fetchTypes();
+    tick()
+  }));
+
+  it('When fetch uniform resource List is called, then it should fail', fakeAsync(() => {
+    service.getUniformResourceListObservable().subscribe( {
+      next: (list:Resource[]) => {
+        expect(list).toBeNull();
+      }
+    })
+    service.fetchNodeListByType('foo');
     tick()
   }));
 
