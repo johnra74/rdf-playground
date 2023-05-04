@@ -5,8 +5,7 @@ This site was inspired by [json-ld playground](https://json-ld.org/playground/).
 ![RDF Playground](screen-shot.png "RDF Playground")
 
 ## Demo
-
-Demo is available at https://johnra74.github.io/rdf-playground-web/
+Check out the [demo](https://johnra74.github.io/rdf-playground-web).
 
 ## Development server
 
