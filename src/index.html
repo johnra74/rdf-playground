@@ -2,10 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="description" content="Inspired by json-ld playground (https://json-ld.org/playground/) with richer visualizer">
+  <meta name="keywords" content="json-ld, rdf, visual graph, playground">
+  <meta name="author" content="Johnathan Ra">
   <title>RDF Playground</title>
   <base href=".">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script type="application/ld+json">
+    {
+      "@content": "http://schema.org",
+      "@type": "WebSite",
+      "url": "https://johnra74.github.io/rdf-playground-web/",
+      "creator": {
+        "@type": "Person",
+        "email": "mailto:hi@johnra.me",
+        "name": "Johnathan Ra",
+        "url": "https://johnra.me"
+      },
+      "description": "Inspired by json-ld playground (https://json-ld.org/playground/) with richer visualizer"
+      "keywords": ["json-ld", "rdf", "visual graph", "playground"],
+      "isBasedOn": "https://json-ld.org/playground/",
+      "teaches": ["json-ld", "rdf"],
+      "potentialAction": {
+        "@type": "Interaction",
+        "description": "Enter JSON-LD to visualize data in tabular or graphic view"
+      }
+    }
+  </script>
 </head>
 <body>
   <app-root></app-root>
