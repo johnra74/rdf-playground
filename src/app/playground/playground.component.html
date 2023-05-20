@@ -46,7 +46,7 @@
             <div class="col-12">
               <form class="d-flex" autocomplete="off">
                 <input class="form-control me-sm-2" 
-                  [(ngModel)]="selectedNode" name="node"
+                  [ngModel]="selectedNode?.title" name="node"
                   [typeahead]="typeaheadNodeList" typeaheadOptionField="title"
                   [typeaheadItemTemplate]="customItemTemplate"
                   [isAnimated]="true" 

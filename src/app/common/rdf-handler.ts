@@ -159,6 +159,11 @@ export class RdfHandler {
     .on('end', () => {
       this.isReady = true;
       this.responseSubject.next({ command: command, success: true, message: 'completed' });
+      forEach(this.cache, (resource: Resource) => {
+        if (typeof resource.title === 'undefined') {
+          resource.title = resource.id;
+        }
+      })
     });
   }
 
