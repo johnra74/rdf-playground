@@ -195,6 +195,7 @@ export class PlaygroundComponent implements OnDestroy, OnInit, AfterViewChecked 
   }
 
   onSelect(match:TypeaheadMatch): void {
+    this.selectedNode = match.item;
     this.isAddition = false;
     this.service.fetchNode(match.item.id);
   }
